@@ -135,7 +135,7 @@ SSH 로그인 시 자동으로 실행됩니다 (위의 설정 완료 후).
 
 ## 시스템 요구사항
 
-- Linux OS
+- Linux OS (Rocky Linux 8, 9 환경에서 테스트 완료)
 - Bash
 - 기본 유틸리티: `bc`, `lscpu`, `df`, `free`, `top`, `awk`, `grep`
 
@@ -172,11 +172,3 @@ sudo apt-get install bc
 # RHEL/CentOS
 sudo yum install bc
 ```
-
-## 라이선스
-
-MIT License
-
-## 기여
-
-이슈 및 개선 사항은 언제든지 환영합니다.
