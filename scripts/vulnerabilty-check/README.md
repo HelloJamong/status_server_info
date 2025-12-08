@@ -1,7 +1,7 @@
 # React/Next.js 취약점 점검 스크립트 사용 가이드
 
 ## 개요
-이 스크립트는 Rocky Linux 환경에서 React Server Components 및 Next.js 취약점(CVE-2025-55182, CVE-2025-66478)을 점검합니다.
+이 스크립트는 모든 Linux 환경에서 React Server Components 및 Next.js 취약점(CVE-2025-55182, CVE-2025-66478)을 점검합니다. 순수 bash로 작성되어 Node.js, jq 등의 추가 패키지 없이 실행 가능합니다.
 
 ## 취약점 정보
 - **CVE-2025-55182**: React Server Components(RSC)의 사전 인증 원격 코드 실행(RCE) 취약점
@@ -56,9 +56,9 @@ sudo ./check_react_nextjs_vulnerability.sh
 - /usr/local
 
 ## 출력 내용
-1. Node.js 및 npm 설치 여부
-2. 발견된 프로젝트 목록
-3. 각 프로젝트의 취약점 분석
+1. 발견된 Node.js 프로젝트 목록
+2. 각 프로젝트의 취약점 분석
+3. 취약한 패키지 및 버전 정보
 4. 최종 요약 및 조치 권고사항
 
 ## 보고서 파일
@@ -66,13 +66,9 @@ sudo ./check_react_nextjs_vulnerability.sh
 - 점검 결과가 저장되어 추후 참고 가능
 
 ## 의존성
-- **필수**: Node.js, npm
-- **선택**: jq (JSON 파싱, 없어도 동작 가능)
-
-jq 설치 (권장):
-```bash
-sudo dnf install jq -y
-```
+- **없음**: 순수 bash로 작성되어 추가 패키지 설치 불필요
+- 표준 Linux 도구만 사용 (grep, sed, awk, find)
+- Node.js, npm, jq 등의 외부 도구 불필요
 
 ## 점검 결과 해석
 

@@ -26,6 +26,16 @@ Linux Ez Kit은 리눅스 서버 관리자와 운영자를 위한 편리한 스�
 - **사용 사례**: 서버 네트워크 이중화, 장애 대응, 고가용성 네트워크 구성
 - **지원 환경**: Rocky Linux (RHEL 계열), NetworkManager 사용 시스템
 
+### 보안 및 취약점 검사
+
+#### [React/Next.js Vulnerability Check](scripts/vulnerabilty-check/)
+React Server Components 및 Next.js의 심각한 보안 취약점(CVE-2025-55182, CVE-2025-66478)을 자동으로 점검하는 스크립트입니다.
+
+- **주요 기능**: package.json 자동 검색, 취약한 버전 탐지, 상세 보고서 생성
+- **사용 사례**: 웹 애플리케이션 보안 점검, 취약점 모니터링, 컴플라이언스 검증
+- **지원 환경**: 모든 Linux 배포판 (순수 bash, 외부 의존성 없음)
+- **특징**: Node.js, jq 등 추가 패키지 설치 불필요
+
 ## 설치 방법
 
 ### 전체 스크립트 설치
@@ -59,8 +69,11 @@ linux-ez-kit/
 │   ├── system-monitoring/              # 시스템 모니터링 스크립트
 │   │   ├── sys_status.sh
 │   │   └── README.md
-│   └── network-bonding/                # 네트워크 본딩 구성 스크립트
-│       ├── set_bonding.sh
-│       ├── bonding.conf
+│   ├── network-bonding/                # 네트워크 본딩 구성 스크립트
+│   │   ├── set_bonding.sh
+│   │   ├── bonding.conf
+│   │   └── README.md
+│   └── vulnerabilty-check/             # 취약점 검사 스크립트
+│       ├── check_react_nextjs_vulnerability.sh
 │       └── README.md
 ```
