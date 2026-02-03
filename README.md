@@ -36,6 +36,13 @@ React Server Components 및 Next.js의 심각한 보안 취약점(CVE-2025-55182
 - **지원 환경**: 모든 Linux 배포판 (순수 bash, 외부 의존성 없음)
 - **특징**: Node.js, jq 등 추가 패키지 설치 불필요
 
+#### [OpenSSL / OpenSSH Security Patch](scripts/ssl_ssh_patch/)
+OpenSSL과 OpenSSH의 보안 취약점(CVE)을 패치하는 자동화 스크립트입니다. 백업, RPM 설치, 버전 검증, CVE 반영 확인까지 전체 프로세스를 자동으로 수행합니다.
+
+- **주요 기능**: CVE 기반 사전/사후 검증, 자동 백업, FIPS Provider 환경 감지, 롤백 및 결과 보고서 생성
+- **사용 사례**: OpenSSL/OpenSSH 보안 패치 적용, CVE 취약점 조치, 패치 컴플라이언스 확인
+- **지원 환경**: Rocky Linux 9.x, RHEL 9.x
+
 ## 설치 방법
 
 ### 전체 스크립트 설치
@@ -73,7 +80,12 @@ linux-ez-kit/
 │   │   ├── set_bonding.sh
 │   │   ├── bonding.conf
 │   │   └── README.md
-│   └── vulnerabilty-check/             # 취약점 검사 스크립트
-│       ├── check_react_nextjs_vulnerability.sh
+│   ├── vulnerabilty-check/             # 취약점 검사 스크립트
+│   │   ├── check_react_nextjs_vulnerability.sh
+│   │   └── README.md
+│   └── ssl_ssh_patch/                  # OpenSSL/OpenSSH 보안 패치 스크립트
+│       ├── patch_script.sh
+│       ├── openssh/                    # OpenSSH 패키지 RPM
+│       ├── openssl/                    # OpenSSL 패키지 RPM
 │       └── README.md
 ```
