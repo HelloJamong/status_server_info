@@ -194,3 +194,36 @@ OpenSSL 패치 후 sshd 재시작이 실패하면 스크립트가 OpenSSL 롤백
 4. **RPM 파일명 유지**: 스크립트가 파일명 패턴으로 자동 검색하므로, 파일명을 임의로 변경하면 안 됩니다
 5. **테스트 환경 우선**: 프로덕션 환경 적용 전 동일 OS 버전의 테스트 환경에서 먼저 검증하세요
 6. **FIPS Provider 주의**: Rocky 9.5 이상에서는 `openssl-fips-provider` 패키지를 설치하지 않습니다. 잘못된 설치는 시스템 오류를 일으킬 수 있습니다
+
+## 다른 버전의 RPM 다운로드 가이드
+
+현재 폴더에 포함된 RPM 파일이 아닌 다른 버전을 사용하려면 Rocky Linux 공식 저장소에서 직접 다운로드할 수 있습니다.
+
+**공식 저장소 URL:**
+[https://dl.rockylinux.org/pub/rocky/9/BaseOS/x86_64/os/Packages/](https://dl.rockylinux.org/pub/rocky/9/BaseOS/x86_64/os/Packages/)
+
+### 다운로드 절차
+
+1. 위 URL을 방문하여 패키지 이름의 첫 글자 폴더로 이동합니다 (예: `o/` → openssl, openssh)
+2. 필요한 버전의 `.rpm` 파일을 다운로드합니다
+3. 다운로드된 파일을 아래와 같이 배치합니다:
+
+```
+openssh/   ← openssh-*.rpm, openssh-server-*.rpm, openssh-clients-*.rpm
+openssl/   ← openssl-*.rpm, openssl-libs-*.rpm, openssl-devel-*.rpm, openssl-fips-provider-*.rpm
+```
+
+### 다운로드 예시 (wget)
+
+```bash
+# OpenSSL 패키지
+wget "https://dl.rockylinux.org/pub/rocky/9/BaseOS/x86_64/os/Packages/o/openssl-<ver>.el9.x86_64.rpm" -O openssl/openssl-<ver>.el9.x86_64.rpm
+wget "https://dl.rockylinux.org/pub/rocky/9/BaseOS/x86_64/os/Packages/o/openssl-libs-<ver>.el9.x86_64.rpm" -O openssl/openssl-libs-<ver>.el9.x86_64.rpm
+
+# OpenSSH 패키지
+wget "https://dl.rockylinux.org/pub/rocky/9/BaseOS/x86_64/os/Packages/o/openssh-<ver>.el9.x86_64.rpm" -O openssh/openssh-<ver>.el9.x86_64.rpm
+wget "https://dl.rockylinux.org/pub/rocky/9/BaseOS/x86_64/os/Packages/o/openssh-server-<ver>.el9.x86_64.rpm" -O openssh/openssh-server-<ver>.el9.x86_64.rpm
+wget "https://dl.rockylinux.org/pub/rocky/9/BaseOS/x86_64/os/Packages/o/openssh-clients-<ver>.el9.x86_64.rpm" -O openssh/openssh-clients-<ver>.el9.x86_64.rpm
+```
+
+> **참고**: `<ver>` 부분은 저장소에서 확인한 실제 버전 문자열로 대체하세요. 다운로드 후 파일명이 원본과 동일한 형식인지 확인하고, RPM 서명 검증을 권장합니다.
